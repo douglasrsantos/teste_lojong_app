@@ -1,0 +1,42 @@
+name: teste_lojong
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cached_network_image: ^3.3.1
+  chucker_flutter: ^1.6.2
+  cupertino_icons: ^1.0.2
+  dio: ^5.4.0
+  dio_cache_interceptor: ^3.5.0
+  dio_cache_interceptor_hive_store: ^3.2.2
+  google_fonts: ^6.1.0
+  flutter_modular: ^6.3.2
+  flutter_mobx: ^2.2.0
+  flutter_svg: ^2.0.9
+  flutter_widget_from_html: ^0.14.11
+  mobx: ^2.2.1
+  path_provider: ^2.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^2.4.7
+  flutter_lints: ^2.0.0
+  mobx_codegen: ^2.4.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/icons/
