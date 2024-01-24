@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobx/mobx.dart';
 import 'package:teste_lojong/app/core/services/check_internet_connection.dart';
@@ -33,9 +32,16 @@ enum ERRORTYPE {
 class InspirationViewModel = _InspirationViewModel with _$InspirationViewModel;
 
 abstract class _InspirationViewModel with Store {
-  final articlesRepository = Modular.get<IArticles>();
-  final videoRepository = Modular.get<IVideo>();
-  final quotesRepository = Modular.get<IQuotes>();
+  // final articlesRepository = Modular.get<IArticles>();
+  final IArticles articlesRepository;
+  final IVideo videoRepository;
+  final IQuotes quotesRepository;
+
+  _InspirationViewModel({
+    required this.articlesRepository,
+    required this.videoRepository,
+    required this.quotesRepository,
+  });
 
   @observable
   ArticleListModel? articles;
@@ -121,18 +127,7 @@ abstract class _InspirationViewModel with Store {
   @action
   Future<void> getVideos() async {
     try {
-      if (!await CheckInternetConnection.hasInternetConnection()) {
-        Timer.periodic(
-          const Duration(seconds: 10),
-          (timer) async {
-            if (await CheckInternetConnection.hasInternetConnection()) {
-              timer.cancel();
-              Modular.to.popUntil((route) => route.settings.name == '/');
-            }
-          },
-        );
-        throw const SocketException('Sem conexão com a internet');
-      }
+      await CheckInternetConnection.testInternet();
 
       final result = await videoRepository.getAllVideos();
 
@@ -155,18 +150,7 @@ abstract class _InspirationViewModel with Store {
   @action
   Future<void> getArticles() async {
     try {
-      if (!await CheckInternetConnection.hasInternetConnection()) {
-        Timer.periodic(
-          const Duration(seconds: 10),
-          (timer) async {
-            if (await CheckInternetConnection.hasInternetConnection()) {
-              timer.cancel();
-              Modular.to.popUntil((route) => route.settings.name == '/');
-            }
-          },
-        );
-        throw const SocketException('Sem conexão com a internet');
-      }
+      await CheckInternetConnection.testInternet();
 
       final result = await articlesRepository.getAllArticles();
 
@@ -190,18 +174,7 @@ abstract class _InspirationViewModel with Store {
   @action
   Future<void> getQuotes() async {
     try {
-      if (!await CheckInternetConnection.hasInternetConnection()) {
-        Timer.periodic(
-          const Duration(seconds: 10),
-          (timer) async {
-            if (await CheckInternetConnection.hasInternetConnection()) {
-              timer.cancel();
-              Modular.to.popUntil((route) => route.settings.name == '/');
-            }
-          },
-        );
-        throw const SocketException('Sem conexão com a internet');
-      }
+      await CheckInternetConnection.testInternet();
 
       final result = await quotesRepository.getAllQuotes();
 
@@ -229,18 +202,7 @@ abstract class _InspirationViewModel with Store {
     }
 
     try {
-      if (!await CheckInternetConnection.hasInternetConnection()) {
-        Timer.periodic(
-          const Duration(seconds: 10),
-          (timer) async {
-            if (await CheckInternetConnection.hasInternetConnection()) {
-              timer.cancel();
-              Modular.to.popUntil((route) => route.settings.name == '/');
-            }
-          },
-        );
-        throw const SocketException('Sem conexão com a internet');
-      }
+      await CheckInternetConnection.testInternet();
 
       final result =
           await articlesRepository.getAllArticles(page: articles?.nextPage);
@@ -269,18 +231,7 @@ abstract class _InspirationViewModel with Store {
     }
 
     try {
-      if (!await CheckInternetConnection.hasInternetConnection()) {
-        Timer.periodic(
-          const Duration(seconds: 10),
-          (timer) async {
-            if (await CheckInternetConnection.hasInternetConnection()) {
-              timer.cancel();
-              Modular.to.popUntil((route) => route.settings.name == '/');
-            }
-          },
-        );
-        throw const SocketException('Sem conexão com a internet');
-      }
+      await CheckInternetConnection.testInternet();
 
       final result =
           await quotesRepository.getAllQuotes(page: quotes?.nextPage);
