@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:teste_lojong/app/core/services/check_internet_connection.dart';
 import 'package:teste_lojong/app/interfaces/articles_interface.dart';
 import 'package:teste_lojong/app/models/article_model.dart';
 
@@ -56,6 +57,8 @@ abstract class _DetailArticleViewModel with Store {
   @action
   Future<void> getArticle(int id) async {
     try {
+      await CheckInternetConnection.testInternet();
+
       final result = await articlesRepository.getArticleById(articleId: id);
 
       article = result;

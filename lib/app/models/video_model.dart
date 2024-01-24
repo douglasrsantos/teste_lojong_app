@@ -14,6 +14,7 @@ class VideoModel {
   int? order;
 
   VideoModel({
+    this.id,
     this.name,
     this.description,
     this.url,
@@ -43,6 +44,7 @@ class VideoModel {
 
   factory VideoModel.fromMap(Map<String, dynamic> map) {
     return VideoModel(
+      id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] != null ? map['name'] as String : null,
       description:
           map['description'] != null ? map['description'] as String : null,

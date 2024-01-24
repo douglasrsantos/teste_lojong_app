@@ -181,10 +181,10 @@ packages:
     dependency: "direct main"
     description:
       name: chucker_flutter
-      sha256: "490f39f5f9bdab697b2b1c6bc371800a8162a47c1924630fbd741815e515a51e"
+      sha256: e90a1537c40c6c15c1a52eb53e214d1c9dd5e6b59a115b8d91fe111d21619fbb
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.2"
+    version: "1.6.3"
   clock:
     dependency: transitive
     description:
@@ -469,14 +469,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  google_fonts:
-    dependency: "direct main"
-    description:
-      name: google_fonts
-      sha256: f0b8d115a13ecf827013ec9fc883390ccc0e87a96ed5347a3114cac177ef18e8
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.0"
   graphs:
     dependency: transitive
     description:
@@ -505,10 +497,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: d4872660c46d929f6b8a9ef4e7a7eff7e49bbf0c4ec3f385ee32df5119175139
+      sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.2.0"
   http_mock_adapter:
     dependency: transitive
     description:
@@ -661,6 +653,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.0+1"
+  mocktail:
+    dependency: "direct dev"
+    description:
+      name: mocktail
+      sha256: c4b5007d91ca4f67256e720cb1b6d704e79a510183a12fa551021f652577dce6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   modular_core:
     dependency: transitive
     description:
